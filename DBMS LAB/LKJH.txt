@@ -101,6 +101,7 @@ print("Square:", result) # Output: Square: 25
 This function takes a number as input and returns its square
 ------------------------------------------------------------------------------------------------------------------------------------------.
 
+
 2. Create the Book database and do the following:
 Book (book_name,author_name,price,quantity).
 i. Write a query to update the quantity by double in the table book.
@@ -149,6 +150,9 @@ print("Maximum:", result) # Output: Maximum: 25
 ```
 This function, `find_maximum`, takes two numbers as input and returns the maximum of the 
 two.
+
+--------------------------------------------------------------------------------------------
+
 3)
 Create the Company database with the following tables and do the following:
 Administration(employee_salary, development _cost, fund_amount,
@@ -220,6 +224,9 @@ END;
 ```
 This PL/SQL function, `find_minimum`, takes two numbers as input and returns the minimum of 
 the two. The example usage shows how to call the function and display the result.
+
+-----------------------------------------------------------------------------------------------
+
 4. Create the student database with the following tables and do the following:
 assessment(reg_no,name, mark1, mark2, mark3, total)
 dept_details (dept_no, dept_name, location).
@@ -265,6 +272,9 @@ END;
 This trigger calculates the "total" by summing the "mark1," "mark2," and "mark3" values when 
 a new record is inserted into the "assessment" table. You may need to adapt this example to 
 suit your specific requirements for data updates and inserts.
+
+-------------------------------------------------------------------------------------------------
+
 5. Consider the following Tables for a bus reservation system application:
 BUS (ROUTENO, SOURCE, DESTINATION)
 PASSENGER (PID, PNAME, DOB, GENDER)
@@ -331,7 +341,10 @@ BEGIN
 END find_maximum;
 ```
 You can call this PL/SQL function to find the maximum of two numbers.
-Consider the following tables.
+
+---------------------------------------------------------------------------------------------------
+
+6. Consider the following tables.
 SAILOR(sid, sname, rating, age)
 BOATS(bid, bname, colour)
 RESERVES(sid, bid, day)
@@ -392,6 +405,9 @@ END;
 This trigger assigns a rating 'A' to sailors below the age of 25 and 'B' to sailors aged 25 or older 
 when a new record is inserted. You may need to adapt this example to suit your specific 
 requirements for data updates and inserts.
+
+--------------------------------------------------------------------------------------------
+
 7. Consider the following relations for a transport management system application:
 DRIVER (DCODE, DNAME, DOB, GENDER)
 CITY (CCODE, CNAME)
@@ -443,7 +459,10 @@ FROM DRIVER;
 ```
 This query counts the number of drivers in the "DRIVER" table, which represents the number of 
 available drivers.
-Consider the following relational schema for a banking database application:
+
+-------------------------------------------------------------------------------------------
+
+8. Consider the following relational schema for a banking database application:
 CUSTOMER (CID, CNAME)
 BRANCH (BCODE, BNAME)
 ACCOUNT (ANO, ATYPE, BALANCE, CID, BCODE)
@@ -499,6 +518,9 @@ END find_maximum;
 ```
 This PL/SQL function takes two numbers as input and returns the maximum of the two. You can 
 call this function to find the maximum of two numbers.
+
+------------------------------------------------------------------------------------------
+
 9)Consider the following database of student enrollment in courses and books
 adopted for that course.
 STUDENT(regno, name, major, bdate)
@@ -566,6 +588,9 @@ END find_maximum;
 ```
 This PL/SQL function takes two numbers as input and returns the maximum of the two. You can 
 call this function to find the maximum of two numbers.
+
+---------------------------------------------------------------------------------------
+
 10. The following are maintained by a book dealer.
 AUTHOR(author_id, name, city, country)
 PUBLISHER(publisher_id, name, city, country)
@@ -611,6 +636,9 @@ END square_number;
 ```
 This PL/SQL procedure takes a number as input and returns its square through an output 
 parameter. You can call this procedure to calculate the square of a number.
+
+----------------------------------------------------------------------------------------------
+
 11. Create the student database with the following tables and do the following:
 mark_details(reg_no,name, mark1, mark2, mark3, total)
 dept_details (dept_no, dept_name, HOD)
@@ -655,6 +683,9 @@ END calculate_square;
 ```
 This PL/SQL procedure takes a number as input and returns its square through an output 
 parameter. You can call this procedure to calculate the square of a number.
+
+------------------------------------------------------------------------------------------
+
 12. Create a database for maintaining the cloud database
 PAAS_details(server, platform, startDate, endDate, rate)
 SAAS_details(server, software, startDate, endDate, rate)
@@ -720,6 +751,9 @@ END find_maximum;
 ```
 This PL/SQL function takes two numbers as input and returns the maximum of the two. You can 
 call this function to find the maximum of two numbers.
+
+----------------------------------------------------------------------------------------------
+
 13. Create a database for Placement and Training cell.
 Stud_details(regno, name, dept, percentage)
 Company(companyID,name, noOfVacancy)
@@ -778,6 +812,9 @@ END find_maximum;
 This PL/SQL procedure takes two numbers as input and returns the maximum of the two 
 through an output parameter. You can call this procedure to calculate the maximum of two 
 numbers.
+
+----------------------------------------------------------------------------------------
+
 14. Create a database for Timetable generation using the following tables:
 Faculty_details(FacultyID,FacultyName, dept)
 Subject_details(Subcode, subtitle, dept, year)
@@ -827,6 +864,9 @@ END find_maximum;
 This PL/SQL procedure takes two numbers as input and returns the maximum of the two 
 through an output parameter. You can call this procedure to calculate the maximum of two 
 numbers.
+
+---------------------------------------------------------------------------------------------------
+
 15. Create a Table as workers and the details are { S.No, Name, Designation, Branch }
 Perform the following commands:
 Alter the table by adding a column Salary
@@ -893,6 +933,9 @@ END;
 This trigger sets a default salary value of 50000 when a new record is inserted into the 
 "workers" table. You can modify this trigger to suit your specific requirements for data updates 
 and inserts.
+
+-----------------------------------------------------------------------------------------------
+
 16. Create the following tables
 student_details {register_no, student_name, DOB, address, city}
 mark_details {register_no, mark1, mark2, mark3, total }
@@ -947,6 +990,9 @@ END find_maximum;
 This PL/SQL procedure takes two numbers as input and returns the maximum of the two 
 through an output parameter. You can call this procedure to calculate the maximum of two 
 numbers.
+
+--------------------------------------------------------------------------------------
+
 17. Consider the following database for a Banking Enterprise.
 Branch{branch_name, branch_city, assets) ACCOUNT(accno, branch_name,
 balance} Depositor {customer_name, accno) CUSTOMER(customer_name,
@@ -1110,6 +1156,9 @@ BEGIN
  IF p_a > p_b THEN
  p_result := p_a;
  ELSE
+
+------------------------------------------------------------------------------------------------
+
 18. Consider the following database consisting of the following tables:
 Hostel (hno, hname, type [boys/girls])
 Menu (hno, day, breakfast, lunch, dinner)
@@ -1164,6 +1213,9 @@ END;
 This trigger updates the "year" column based on the "gender" when a new student record is 
 inserted. You can customize this trigger to suit your specific requirements for data updates and 
 inserts.
+
+----------------------------------------------------------------------------------------------
+
 19. Create the Company database with the following tables and do the following:
 Administration(employee_salary, development _cost, fund_amount,
 turn_over,bonus)
@@ -1220,6 +1272,9 @@ Please replace 'your_username' and 'your_password' with actual username and pass
 validation logic. This is a simple login form that checks the provided username and password, 
 and it displays a message based on whether the login was successful or not. You should also 
 replace "login.php" with the filename of your PHP script that handles the login logic.
+
+----------------------------------------------------------------------------------------------
+
 20 Consider the following tables.
 SAILOR(sid, sname, rating, age)
 BOATS(bid, bname, colour)
