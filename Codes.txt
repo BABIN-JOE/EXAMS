@@ -1,0 +1,318 @@
+1. Coding to Blink an Led
+
+
+#define LED_PIN 13
+void setup()
+{
+pinMode(LED_PIN, OUTPUT);
+}
+void loop()
+{
+digitalWrite(LED_PIN, HIGH);
+delay(500);
+digitalWrite(LED_PIN, LOW);
+delay(500);
+}
+
+--------------------------------------------------------------------------
+
+2. To Turn LED ON and OFF With Button using Arduino controller
+
+
+#define LED_PIN 8
+#define BUTTON_PIN 7
+void setup() {
+pinMode(LED_PIN, OUTPUT);
+pinMode(BUTTON_PIN, INPUT);
+}
+void loop() {
+if (digitalRead(BUTTON_PIN) == HIGH) {
+digitalWrite(LED_PIN, HIGH);
+}
+else {
+digitalWrite(LED_PIN, LOW);
+}
+}
+
+
+-----------------------------------------------------------------------------
+
+3.  Coding to increase and decrease the intensity of brightness the LED blinks
+
+
+// These constants won't change. They're used to give names to the pins used:
+const int analogInPin = A0; // Analog input pin that the potentiometer is attached to
+const int analogOutPin = 9; // Analog output pin that the LED is attached to
+int sensorValue = 0; // value read from the pot
+int outputValue = 0; // value output to the PWM (analog out)
+void setup() {
+// initialize serial communications at 9600 bps:
+Serial.begin(9600);
+}
+void loop() {
+ // read the analog in value:
+ sensorValue = analogRead(analogInPin);
+ // map it to the range of the analog out:
+ outputValue = map(sensorValue, 0, 1023, 0, 255);
+ // change the analog out value:
+ analogWrite(analogOutPin, outputValue);
+ // print the results to the Serial Monitor:
+ Serial.print("sensor = ");
+ Serial.print(sensorValue);
+ Serial.print("\t output = ");
+ Serial.println(outputValue);
+ // wait 2 milliseconds before the next loop for the analog-to-digital
+ // converter to settle after the last reading:
+ delay(2);
+
+----------------------------------------------------------------------------------
+
+4. Coding to blink multiple LEDs at the same time
+
+
+// initialize the pins and tell which pin are connected to which LED (int led no = arduino pin no)
+int led1 = 4; // or #define LED_PIN 4
+int led2 = 8; // or #define LED_PIN 8
+int led3 = 13; // or #define LED_PIN 13
+// Setup the 8 pins as OUTPUT
+void setup() { 
+pinMode(led1, OUTPUT);
+pinMode(led2, OUTPUT);
+pinMode(led3, OUTPUT);
+}
+// the loop routine runs over and over again forever:
+void loop() {
+digitalWrite(led1, HIGH); // turn the LED on (HIGH is the voltage level at 5 volt)
+digitalWrite(led2, HIGH); // turn the LED on (HIGH is the voltage level at 5 volt)
+digitalWrite(led3, HIGH); // turn the LED on (HIGH is the voltage level at 5 volt)
+delay(100); // wait for a second
+digitalWrite(led1, LOW); // turn the LED on (LOW is the voltage level at 0 volt)
+digitalWrite(led2, LOW); // turn the LED on (LOW is the voltage level at 0 volt)
+digitalWrite(led3, LOW); // turn the LED on (LOW is the voltage level at 0 volt)
+delay(100); // wait for a second
+}
+
+------------------------------------------------------------------------------------------
+
+5. Coding for RGB LED to scroll through a variety of colors
+
+
+// initialize the pins and tell which pin are connected to which LED (int led no = arduino pin no)
+int led1 = 11; // or #define LED_PIN 11
+int led2 = 12; // or #define LED_PIN 12
+int led3 = 13; // or #define LED_PIN 13
+// Setup the 8 pins as OUTPUT
+void setup() { 
+pinMode(led1, OUTPUT);
+pinMode(led2, OUTPUT);
+pinMode(led3, OUTPUT);
+}
+// the loop routine runs over and over again forever:
+void loop() {
+digitalWrite(led1, HIGH); // turn the LED on (HIGH is the voltage level at 5 volt)
+delay(100); // wait for a second
+digitalWrite(led2, HIGH); // turn the LED on (HIGH is the voltage level at 5 volt)
+delay(100); // wait for a second
+digitalWrite(led3, HIGH); // turn the LED on (HIGH is the voltage level at 5 volt)
+delay(100); // wait for a second
+digitalWrite(led1, LOW); // turn the LED on (LOW is the voltage level at 0 volt)
+delay(100); // wait for a second
+digitalWrite(led2, LOW); // turn the LED on (LOW is the voltage level at 0 volt)
+delay(100); // wait for a second
+digitalWrite(led3, LOW); // turn the LED on (LOW is the voltage level at 0 volt)
+delay(100); // wait for a second
+}
+
+------------------------------------------------------------------------------------
+
+6.  Coding for piezo buzzer/speaker
+
+
+int buzzer=3;
+void setup() {
+ // put your setup code here, to run once:
+pinMode(buzzer,OUTPUT);
+}
+void loop() {
+ // put your main code here, to run repeatedly:
+tone(buzzer,12000);
+}
+
+------------------------------------------------------------------------------------------
+
+7.  Coding of a temperature/fire sensor
+
+
+int val;
+int tempPin = 0;
+void setup() {
+ Serial.begin(9600);
+}
+void loop() {
+ val = analogRead(tempPin);
+ float mv = ( val/1024.0)*5000;
+ float cel = mv/10;
+ float farh = (cel*9)/5 + 32;
+ Serial.print("TEMPRATURE = ");
+ Serial.print(cel);
+ Serial.print("*C");
+ Serial.println();
+ delay(1000);
+/* uncomment this to get temperature in farenhite
+Serial.print("TEMPRATURE = ");
+Serial.print(farh);
+Serial.print("*F");
+Serial.println();
+*/
+}
+
+--------------------------------------------------------------------------------------------------
+
+8. Coding of a Infra-red obstacle sensor
+
+
+//Switch an LED using an IR sensor
+int ir = 2;
+int PinLed = 10;
+int val=0;
+void setup()
+{
+pinMode(ir, INPUT);
+pinMode(PinLed, OUTPUT);
+}
+void loop()
+{
+if(digitalRead(ir) == LOW)
+{
+digitalWrite(PinLed, HIGH);
+}
+else
+{
+digitalWrite(PinLed, LOW);
+}
+}
+
+----------------------------------------------------------------------------------------------------------------------
+
+9. Coding of a heart beat sensor
+
+
+#define USE_ARDUINO_INTERRUPTS true // Set-up low-level interrupts for most acurate BPM math
+#include <PulseSensorPlayground.h> // Includes the PulseSensorPlayground Library
+const int PulseWire = 0; // 'S' Signal pin connected to A0
+const int LED13 = 13; // The on-board Arduino LED
+int Threshold = 550; // Determine which Signal to "count as a beat" and which to ignore 
+PulseSensorPlayground pulseSensor; // Creates an object
+void setup() {
+Serial.begin(9600);
+// Configure the PulseSensor object, by assigning our variables to it
+pulseSensor.analogInput(PulseWire); 
+pulseSensor.blinkOnPulse(LED13); // Blink on-board LED with heartbeat
+pulseSensor.setThreshold(Threshold); 
+// Double-check the "pulseSensor" object was created and began seeing a signal
+if (pulseSensor.begin()) {
+Serial.println("PulseSensor object created!");
+}
+}
+void loop() {
+int myBPM = pulseSensor.getBeatsPerMinute(); // Calculates BPM
+if (pulseSensor.sawStartOfBeat()) { // Constantly test to see if a beat 
+happened
+Serial.println("♥ A HeartBeat Happened ! "); // If true, print a message
+Serial.print("BPM: ");
+Serial.println(myBPM); // Print the BPM value
+}
+delay(20);
+}
+
+------------------------------------------------------------------------------------------------------
+
+10. Coding for servo back and forth range of motion
+
+
+#include <Servo.h>
+Servo myservo; // create servo object to control a servo
+// twelve servo objects can be created on most boards
+int pos = 0; // variable to store the servo position
+void setup() {
+ myservo.attach(9); // attaches the servo on pin 9 to the servo object
+}
+void loop() {
+ for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
+ // in steps of 1 degree
+ myservo.write(pos); // tell servo to go to position in variable 'pos'
+ delay(15); // waits 15ms for the servo to reach the position
+ }
+ for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
+ myservo.write(pos); // tell servo to go to position in variable 'pos'
+ delay(15); // waits 15ms for the servo to reach the position
+ }
+}
+
+----------------------------------------------------------------------------------------------------
+
+11. Coding for DC stepper / servo motor control
+
+
+#include <Servo.h>
+Servo myservo; // create servo object to control a servo
+int potpin = 0; // analog pin used to connect the potentiometer
+int val; // variable to read the value from the analog pin
+void setup() {
+ myservo.attach(9); // attaches the servo on pin 9 to the servo object
+}
+void loop() {
+ val = analogRead(potpin); // reads the value of the potentiometer (value between 0 and 1023)
+ val = map(val, 0, 1023, 0, 180); // scale it to use it with the servo (value between 0 and 180)
+ myservo.write(val); // sets the servo position according to the scaled value
+ delay(15); // waits for the servo to get there
+}
+
+-----------------------------------------------------------------------------------------------------------
+
+12. Coding for Bluetooth
+
+
+char data = 0; //Variable for storing received data
+void setup() 
+{
+ Serial.begin(9600); //Sets the data rate in bits per second (baud) for serial data transmission
+ pinMode(13, OUTPUT); //Sets digital pin 13 as output pin
+}
+void loop()
+{
+ if(Serial.available() > 0) // Send data only when you receive data:
+ {
+ data = Serial.read(); //Read the incoming data and store it into variable data
+ Serial.print(data); //Print Value inside data in Serial monitor
+ Serial.print("\n"); //New line 
+ if(data == '1') //Checks whether value of data is equal to 1 
+ digitalWrite(13, HIGH); //If value is 1 then LED turns ON
+ else if(data == '0') //Checks whether value of data is equal to 0
+ digitalWrite(13, LOW); //If value is 0 then LED turns OFF
+ } 
+}
+
+---------------------------------------------------------------------------------------------------------------
+
+13.  Coding for display text / names / number / time on the LCD screen
+
+
+// include the library code:
+#include<LiquidCystal.h>
+// initialize the library with the numbers of the interface pins
+LiquidCrystal lcd(7, 6, 8, 9, 10, 11);
+void setup()
+{
+// set up the LCD's number of columns and rows:
+lcd.begin(16, 2); // Print a message to the LCD.
+lcd.print("TechPonder"); }
+void loop()
+{ // set the cursor to column 0, line 1 // (note: line 1 is the second row, since counting begins with 0): 
+lcd.setCursor(0, 0);
+lcd.print(" TechPonder ");
+lcd.setCursor(0,1);
+lcd.print(" Arduino LCD ");
+}
+
+------------------------------------------------------------------------------------------------------------------------
